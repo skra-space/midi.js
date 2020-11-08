@@ -1,3 +1,5 @@
+// When other modules connectMIDI(fun), we add those fun's to this array
+// and call them all onmidimessage.
 const callbacks = [];
 
 //    === Main ===
@@ -104,28 +106,3 @@ function parse(midiData) {
 export function connectMIDI(callback) {
   callbacks.push(callback);
 }
-
-// if (msg.data[0] >= 144 && msg.data[0] < 160) {
-//   const ch = msg.data[0] - 144
-//   const pad = msg.data[1] - 24
-//   const vel = msg.data[2]
-//   play(ch, pad, vel);
-// } else if (msg.data[0] >= 176 && msg.data[0] < 184) {
-//   const ch = msg.data[0] - 176
-//   const knob = msg.data[1] - 1
-//   const vel = msg.data[2]
-//   // mixer.tweak(ch, knob, vel)
-// }
-
-// function onControl(msg) {
-//   if (msg.data[0] >= 176 && msg.data[0] < 184) {
-//     const ch = msg.data[0] - 176
-//     const knob = msg.data[1] - 1
-//     const val = msg.data[2]
-//     // mixer.tweak(ch, knob, val)
-//   } else if (msg.data[0] === 144) {
-//     const pad = msg.data[1]
-//     const vel = msg.data[2]
-//     // play(client.channel, pad, vel) // pass a channel here?
-//   }
-// }
